@@ -2,13 +2,10 @@ package ru.fecore.commands;
 
 import com.google.common.collect.Lists;
 import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import ru.fecore.FeCORE;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class fecorehelp extends FeCOREcommands {
 
@@ -20,7 +17,7 @@ public class fecorehelp extends FeCOREcommands {
     public void execute(CommandSender sender, String label, String[] args) {
         if (args.length == 0) {
             if(!sender.hasPermission("fecore.admin")) {
-                sender.sendMessage("У вас нет прав");
+                sender.sendMessage(ChatColor.DARK_RED + FeCORE.getInstance().getConfig().getString("messages.noPermission"));
             return;
             }
             sender.sendMessage(ChatColor.GOLD + "Все команды!!");
@@ -45,6 +42,7 @@ public class fecorehelp extends FeCOREcommands {
     sender.sendMessage(ChatColor.DARK_RED + "Команда /fecore " + args[0] + " Не найдена");
 
     }
+
 
     @Override
     public List<String> complete(CommandSender sender, String[] args) {
