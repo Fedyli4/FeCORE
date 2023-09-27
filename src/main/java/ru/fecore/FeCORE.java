@@ -5,17 +5,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import ru.fecore.commands.fecoregamemode;
 import ru.fecore.commands.fecorehelp;
+import ru.fecore.commands.joincommand;
 
 
 public final class FeCORE extends JavaPlugin {
 
     private static FeCORE instance;
-    private players data;
+    private Storage data;
     @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-       data = new players("players.yml");
+       data = new Storage("players.yml");
 
         saveDefaultConfig();
 
@@ -23,6 +24,7 @@ public final class FeCORE extends JavaPlugin {
 
         new fecoregamemode();
         new fecorehelp();
+        new joincommand();
         Bukkit.getPluginManager().registerEvents(new EventListener(), this);
 
 
@@ -37,7 +39,7 @@ public final class FeCORE extends JavaPlugin {
         return instance;
     }
 
-    public static players getData() {
+    public static Storage getData() {
         return instance.data;
     }
 

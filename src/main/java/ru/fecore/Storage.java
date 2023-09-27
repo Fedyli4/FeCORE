@@ -5,14 +5,12 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
-public class players {
-
+public class Storage {
     private File file;
     private FileConfiguration config;
 
-    public players(String name) {
+    public Storage(String name) {
         file = new File(FeCORE.getInstance().getDataFolder(), name);
         try {
             if (!file.exists() && !file.createNewFile()) throw new IOException();
